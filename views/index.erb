@@ -1,3 +1,16 @@
 <p>
   Welcome!
 </p>
+
+<a href="/computers/new">Add a Computer</a>
+<br>
+
+<ul><% array_of_computers.each do |computer| %>
+      <li><b><%= computer[:brand] %></b>
+        <ul>
+          <li><%= computer[:color] %>
+          <li><%= computer[:size] %>
+          <li><%= computer[:ram] %>
+        </ul>
+      <% end %>
+    </ul>
