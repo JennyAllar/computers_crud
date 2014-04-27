@@ -20,7 +20,20 @@ class Application < Sinatra::Application
   end
 
   post '/computers' do
-    DB[:computers].insert(brand: params[:brand], color: params[:color], size: params[:size], ram: params[:ram])
+    computer_id = params[:id]
+    DB[:computers].where(id: computer_id).insert(brand: params[:brand], color: params[:color], size: params[:size], ram: params[:ram])
+    redirect '/'
+  end
+
+  get '/computers/:id/edit' do
+    computer_id = params[:id]
+    single_computer = DB[:computers][id: computer_id]
+    erb :"computers/edit", locals: {single_computer: single_computer}
+  end
+
+  put '/computers/:id' do
+    computer_id = params[:id]
+    DB[:computers].where(id: computer_id).update(brand: params[:brand], color: params[:color], size: params[:size], ram: params[:ram])
     redirect '/'
   end
 

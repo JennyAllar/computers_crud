@@ -1,0 +1,10 @@
+<h1>Updating <%= single_computer[:brand] %></h1>
+
+<form action="/computers/<%= single_computer[:id] %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  Brand: <input type="text" name="brand" value="<%= single_computer[:brand] %>" placeholder="Ex: eMachine" autofocus="autofocus"><br>
+  Color: <input type="text" name="color" value="<%= single_computer[:color] %>" placeholder="Ex: Grey"><br>
+  Size: <input type="text" name="size" value="<%= single_computer[:size] %>" placeholder="Ex: 17"><br>
+  RAM: <input type="text" name="ram" value="<%= single_computer[:ram] %>" placeholder="Ex: 2"><br>
+  <input type="submit" value="Update Computer" id="button">
+</form>

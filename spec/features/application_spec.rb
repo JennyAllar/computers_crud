@@ -27,6 +27,36 @@ feature 'Homepage' do
     expect(page).to have_content"White"
     expect(page).to have_content"13"
     expect(page).to have_content"4"
+  end
+
+  scenario 'User can edit a computer' do
+
+    visit '/'
+
+    click_on "Add a Computer"
+
+    fill_in "brand", with: "Sony"
+    fill_in "color", with: "White"
+    fill_in "size", with: "13"
+    fill_in "ram", with: "4"
+
+    click_on "Add Computer"
+
+    click_on "Sony"
+
+    fill_in "brand", with: "Macintosh"
+    fill_in "color", with: "White"
+    fill_in "size", with: "13"
+    fill_in "ram", with: "4"
+
+    click_on "Update Computer"
+
+    expect(page).to have_content"Macintosh"
+    expect(page).to have_content"White"
+    expect(page).to have_content"13"
+    expect(page).to have_content"4"
+
+    expect(page).to have_no_content"Sony"
 
   end
 end

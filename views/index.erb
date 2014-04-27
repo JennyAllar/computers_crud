@@ -6,7 +6,7 @@
 <br>
 
 <ul><% array_of_computers.each do |computer| %>
-      <li><b><%= computer[:brand] %></b>
+      <li><b><a href='/computers/<%= computer[:id] %>/edit'><%= computer[:brand] %></b></a>
         <ul>
           <li><%= computer[:color] %>
           <li><%= computer[:size] %>
