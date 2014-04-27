@@ -8,3 +8,8 @@
   RAM: <input type="text" name="ram" value="<%= single_computer[:ram] %>" placeholder="Ex: 2"><br>
   <input type="submit" value="Update Computer" id="button">
 </form>
+
+<form action="/computers/<%= single_computer[:id] %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Computer" id="button">
+</form>

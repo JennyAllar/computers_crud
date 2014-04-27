@@ -23,10 +23,10 @@ feature 'Homepage' do
 
     click_on "Add Computer"
 
-    expect(page).to have_content"Mac"
-    expect(page).to have_content"White"
-    expect(page).to have_content"13"
-    expect(page).to have_content"4"
+    expect(page).to have_content "Mac"
+    expect(page).to have_content "White"
+    expect(page).to have_content "13"
+    expect(page).to have_content "4"
   end
 
   scenario 'User can edit a computer' do
@@ -51,12 +51,30 @@ feature 'Homepage' do
 
     click_on "Update Computer"
 
-    expect(page).to have_content"Macintosh"
-    expect(page).to have_content"White"
-    expect(page).to have_content"13"
-    expect(page).to have_content"4"
+    expect(page).to have_content "Macintosh"
+    expect(page).to have_content "White"
+    expect(page).to have_content "13"
+    expect(page).to have_content "4"
 
-    expect(page).to have_no_content"Sony"
+    expect(page).to have_no_content "Sony"
+  end
 
+  scenario 'user can delete a computer' do
+      visit '/'
+
+      click_on "Add a Computer"
+
+      fill_in "brand", with: "Dell"
+      fill_in "color", with: "White"
+      fill_in "size", with: "13"
+      fill_in "ram", with: "4"
+
+      click_on "Add Computer"
+
+      click_on "Dell"
+
+      click_on "Delete Computer"
+
+      expect(page).to have_no_content "Dell"
   end
 end
